@@ -10,11 +10,10 @@ import { InfiniteScroll } from "@/components/infinite-scroll";
 import { PainPoints } from "@/components/pain-points";
 import SubmitEmail from "@/components/submit-email";
 import { FAQ } from "@/components/FAQ";
-import LinkButton from "@/components/link-button";
-import { RiWhatsappFill } from "react-icons/ri";
 import Logo from "@/components/logo";
 import MainButton from "@/components/main-button";
 import BackgroundBubble from "@/components/background-bubble";
+import NewFAQButton from "@/components/new-faq";
 
 const words = ["super poderes", "respostas automaticas", "agendamento de mensagens",  "multiplos atendentes", "suporte 24hs"];
 const features = [
@@ -250,10 +249,7 @@ export default function Home() {
               <Subtitle className="uppercase text-primary text-left mb-5">Ainda com dúvidas?</Subtitle>
               <p>Entre em contato conosco através do whatsapp! Vamos responder todas as suas perguntas.</p>
             </div>
-            <LinkButton href="https://api.whatsapp.com/send?phone=553199733544" className="px-4 py-2 flex gap-2 items-center">
-              <RiWhatsappFill className="w-5 h-5" />
-              Tirar duvida
-            </LinkButton>
+            <NewFAQButton />
           </div>
         </div>
       </Section>

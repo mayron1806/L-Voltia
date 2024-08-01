@@ -28,7 +28,6 @@ export const FlipWords = ({
         startAnimation();
       }, duration);
   }, [isAnimating, duration, startAnimation]);
-  console.log(currentWord);
   
   return (
     <AnimatePresence
