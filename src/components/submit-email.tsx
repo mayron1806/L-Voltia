@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 
 const SubmitEmail = () => {
-  const [state, formAction] = useFormState(submitEmail, {});
+  const [state, formAction] = useFormState(submitEmail, undefined);
   const [email, setEmail] = useState("");
 
   return (  
@@ -25,7 +25,7 @@ const SubmitEmail = () => {
       />
       {
         !state?.success &&
-        <span className="text-red-500 text-sm">{state.error}</span>
+        <span className="text-red-500 text-sm">{state?.error}</span>
       }
       {
         state?.success &&
