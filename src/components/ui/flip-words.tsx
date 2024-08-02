@@ -31,7 +31,7 @@ export const FlipWords = ({
   const renderFlip = () => {
     let index = 0;
     return currentWord.split(" ").map((word) => (
-      <div>
+      <div key={word}>
         {word.split("").map((letter) => {
           index++;
           return <motion.span

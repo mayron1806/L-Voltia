@@ -1,7 +1,10 @@
 import Confetti from "@/components/confetti";
 import Share from "@/components/share";
 import Image from "next/image";
-
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "L-Voltia / Obrigado por se Inscrever! ",
+}
 const Congratulations = () => {
   return ( 
     <>

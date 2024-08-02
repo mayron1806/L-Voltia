@@ -10,7 +10,7 @@ const Share = () => {
       const url = new URL(window.location.href);
       setLink(`${url.protocol}//${url.host}`);
     }
-  }, [window]);
+  }, []);
   return ( 
     <Popover>
       <PopoverTrigger asChild>
