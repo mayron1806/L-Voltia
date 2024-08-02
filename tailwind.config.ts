@@ -34,13 +34,13 @@ const config = {
           lighter: "#333944",
         },
         primary: {
-          DEFAULT: "#25D366",
-          lighter: "#4DDB88",
+          DEFAULT: "#D04040",
+          lighter: "#E06060",
           foreground: "#FCF5EB",
         },
         secondary: {
-          DEFAULT: "#08BEEF",
-          lighter: "#33CCFF",
+          DEFAULT: "#E0CF4C",
+          lighter: "#EEDD77",
           foreground: "#FCF5EB",
         },
         destructive: {

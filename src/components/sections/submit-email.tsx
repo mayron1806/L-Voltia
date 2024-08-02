@@ -4,35 +4,41 @@ import { sendGAEvent, sendGTMEvent } from "@next/third-parties/google";
 import { Loader2Icon } from "lucide-react";
 import { useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
+import Section from "../section";
 
-const SubmitEmail = () => {
+type Props = {
+  label?: string;
+}
+const SubmitEmail = ({ label }: Props) => {
   const [state, formAction] = useFormState(submitEmail, undefined);
   const [email, setEmail] = useState("");
 
-  return (  
-    <form 
-      action={formAction}
-      className="gap-2 flex flex-col items-center w-full max-w-screen-sm mx-auto justify-center"
-    >
-      <label id="form" className="font-bold text-2xl">Quero automatizar meu WhatsApp</label>
-      <input
-        type="email" 
-        placeholder="Seu melhor e-mail"
-        value={email}
-        name="email"
-        onChange={(e) => setEmail(e.target.value)}
-        className="p-4 rounded-md border px-6 text-xl w-full border-primary"
-      />
-      {
-        !state?.success &&
-        <span className="text-red-500 text-sm">{state?.error}</span>
-      }
-      {
-        state?.success &&
-        <span className="text-green-500 text-sm">Email enviado!</span>
-      }
-      <Submit email={email} />
-    </form>
+  return (
+    <Section>
+      <form 
+        action={formAction}
+        className="gap-2 flex flex-col items-center w-full max-w-screen-sm mx-auto justify-center"
+      >
+        <label id="form" className="font-bold text-2xl">{label}</label>
+        <input
+          type="email" 
+          placeholder="Seu melhor e-mail"
+          value={email}
+          name="email"
+          onChange={(e) => setEmail(e.target.value)}
+          className="p-4 rounded-md border px-6 text-xl w-full border-primary"
+        />
+        {
+          !state?.success &&
+          <span className="text-red-500 text-sm">{state?.error}</span>
+        }
+        {
+          state?.success &&
+          <span className="text-green-500 text-sm">Email enviado!</span>
+        }
+        <Submit email={email} />
+      </form>
+    </Section>
   );
 }
 type SubmitProps = {

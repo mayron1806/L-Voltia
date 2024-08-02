@@ -1,4 +1,4 @@
-import { AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion";
+import { AccordionContent, AccordionItem, AccordionTrigger } from "../../ui/accordion";
 
 type Props = {
   ask: string;

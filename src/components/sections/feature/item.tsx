@@ -9,7 +9,7 @@ type Props = {
 }
 const FeatureItem = ({ iconSrc, reverse, description, title }: Props) => {
   return ( 
-    <li className="grid grid-cols-1 md:gap-20 md:grid-cols-5">
+    <li className="grid grid-cols-1  md:grid-cols-5">
       <div className={cn("md:col-span-2 rounded-lg min-h-[300px]", reverse && "md:order-last")}>
         <Image alt={iconSrc ?? 'icon'} src={iconSrc || ""} width={300} height={300} className="mx-auto"/>
       </div>

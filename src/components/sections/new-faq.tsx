@@ -1,6 +1,6 @@
 'use client';
 import { RiWhatsappFill } from "react-icons/ri";
-import LinkButton from "./link-button";
+import LinkButton from "../link-button";
 import { sendGAEvent, sendGTMEvent } from "@next/third-parties/google";
 
 const NewFAQButton = () => {
@@ -10,7 +10,7 @@ const NewFAQButton = () => {
         sendGTMEvent({ event: 'new-faq' });
         sendGAEvent({ event: 'new-faq' });
       }}
-      href="https://wa.me/553199733544?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20L-Voltia%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida"
+      href="https://wa.me/553199733544?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Zoldy%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida"
       target="_blank"
       className="px-4 py-2 flex gap-2 items-center"
     >

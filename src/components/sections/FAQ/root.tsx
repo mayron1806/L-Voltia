@@ -1,4 +1,4 @@
-import { Accordion } from "../ui/accordion";
+import { Accordion } from "../../ui/accordion";
 
 const Root = ({ children }: {children: React.ReactNode}) => {
   return ( 

@@ -11,7 +11,7 @@ const MainButton = () => {
           sendGAEvent({ event: 'main-button-clicked' });
         }}
         className="bg-primary text-background rounded-lg text-xl font-bold p-5 border-primary flex items-center space-x-2"
-      >Automatizar Whatsapp</Link>
+      >Quero Automatizar</Link>
     </div>
   );
 }

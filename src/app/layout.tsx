@@ -4,10 +4,19 @@ import "./globals.css";
 import { GoogleTagManager, GoogleAnalytics } from '@next/third-parties/google';
 const roboto = Roboto({ weight: ["400", "700"], subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "L-Voltia / Whatsapp com super poderes",
+const metadataWhatsapp: Metadata = {
+  title: "Zoldy / Whatsapp com super poderes",
   description: "Transforme seu WhatsApp em uma máquina de vendas 100% automatizada e deixe seus concorrentes para trás!",
 };
+const metadataWeb: Metadata = {
+  title: "Zoldy / Seu chat inteligente",
+  description: "Transforme seu WhatsApp em uma máquina de vendas 100% automatizada e deixe seus concorrentes para trás!",
+};
+export async function generateMetadata({ searchParams }: { searchParams: { template?: 'whatsapp' | 'web' }}) {
+  if(!searchParams?.template) return metadataWeb;
+  if(searchParams.template === 'whatsapp') return metadataWhatsapp;
+  return metadataWeb;
+}
 
 export default function RootLayout({
   children,

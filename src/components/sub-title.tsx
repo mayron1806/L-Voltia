@@ -20,7 +20,7 @@ const Subtitle = ({ children, className }: Props) => {
         duration: 0.2,
         ease: [0.4, 0.0, 0.2, 1],
       }}
-      className={cn("text-2xl font-bold text-center mb-16", className)}
+      className={cn("text-4xl font-bold text-center mb-5", className)}
     >
       {children}
     </motion.h2>
