@@ -17,11 +17,11 @@ const Main = ({ words, features, subtitle, title }: Props) => {
         <header className="flex flex-col items-center text-center mb-10">
           <Logo />
           <div className="flex flex-col items-center space-y-2 my-16">
-            <div className="text-foreground text-5xl h-52 font-bold">
+            <div className="text-foreground text-4xl md:text-5xl lg:text-6xl min-h-52 font-bold">
               <h1>{title}</h1>
               <FlipWords words={words} className="text-primary" /> <br />
             </div>
-            <h2 className="font-bold text-3xl md:w-[900px]">
+            <h2 className="font-bold text-2xl md:text-3xl md:w-[900px]">
               {subtitle}
             </h2>
           </div>
