@@ -118,7 +118,7 @@ export default function Home() {
       <Companies />
       <PainPoints painPoints={painPoints} />
       <Ask />
-      <SubmitEmail />
+      <SubmitEmail label="Quero me cadastrar para usar o Zoldy" />
       <FAQ faqList={faqList} />
       <ContactUs />
       <Footer />

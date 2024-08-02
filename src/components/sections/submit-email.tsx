@@ -24,7 +24,8 @@ const SubmitEmail = ({ label }: Props) => {
     sendGAEvent({ action: "submit_email", category: "form", label: email });
     sendGTMEvent({ event: "submit_email", email });
     setIsLoading(true);
-    const response = await fetch('/api/email', {
+    const template = searchParams.get('template');
+    const response = await fetch(`/api/email?template=${template}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -34,7 +35,6 @@ const SubmitEmail = ({ label }: Props) => {
     setIsLoading(false);
     if (response.ok) {
       router.refresh();
-      const template = searchParams.get('template');
       if (template === 'whatsapp') {
         router.push('/congratulations?template=whatsapp');
       } else {

@@ -8,7 +8,7 @@ const Share = () => {
   useEffect(()=> {
     if (typeof window !== 'undefined') {
       const url = new URL(window.location.href);
-      setLink(`${url.protocol}//${url.host}?${url.search}`);
+      setLink(`${url.protocol}//${url.host}${url.search}`);
     }
   }, []);
   return ( 

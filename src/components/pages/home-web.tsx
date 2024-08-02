@@ -104,7 +104,6 @@ const faqList = [
     answer: "Sim, oferecemos suporte técnico para resolver qualquer problema ou dúvida que você possa ter ao usar o Zoldy. Nossa equipe está disponível para garantir que você obtenha o máximo da nossa plataforma e resolva quaisquer questões rapidamente.",
   },
 ];
-
 export default function Home() {
   return (
     <>
