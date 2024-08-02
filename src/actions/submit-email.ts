@@ -1,6 +1,7 @@
 'use server';
 
 import { firestore } from "@/lib/db";
+import { redirect } from "next/navigation";
 import { z } from "zod";
 
 export const submitEmail = async (prevState: any, formData: FormData) => {
@@ -12,10 +13,8 @@ export const submitEmail = async (prevState: any, formData: FormData) => {
   }
   try {
     const emailsCollectionPath = process.env.EMAILS_COLLECTIONS!;
-    console.log();
-    
     await firestore.collection(emailsCollectionPath).doc(result.data).set({ email: result.data });
-    return { success: true };
+    redirect('/congratulations');
   } catch (error) {
     if (error instanceof Error) {
       return { success: false, error: error.message };

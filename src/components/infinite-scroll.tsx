@@ -76,7 +76,7 @@ export const InfiniteScroll = ({
       <ul
         ref={scrollerRef}
         className={cn(
-          " flex min-w-full shrink-0 gap-40 py-4 w-max flex-nowrap",
+          " flex min-w-full shrink-0 gap-28 py-4 w-max flex-nowrap",
           start && "animate-scroll ",
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}

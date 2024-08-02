@@ -7,8 +7,8 @@ import { useFormState, useFormStatus } from "react-dom";
 
 const SubmitEmail = () => {
   const [state, formAction] = useFormState(submitEmail, {});
-  const { pending } = useFormStatus();
   const [email, setEmail] = useState("");
+
   return (  
     <form 
       action={formAction}
@@ -31,18 +31,27 @@ const SubmitEmail = () => {
         state?.success &&
         <span className="text-green-500 text-sm">Email enviado!</span>
       }
-      <button 
-        className="p-8 py-4 text-xl bg-primary flex gap-2 text-background font-bold rounded-md"
-        onClick={() => {
-          sendGTMEvent({ event: 'submit-email', value: email });
-          sendGAEvent({ event: 'submit-email', value: email });
-        }}
-      >
-        { pending && <Loader2Icon className="animate-spin text-background" strokeWidth={3} /> }
-        Automatizar
-      </button>
+      <Submit email={email} />
     </form>
   );
 }
- 
+type SubmitProps = {
+  email: string;
+}
+const Submit = ({ email }: SubmitProps) => {
+  const { pending } = useFormStatus();
+  return (
+    <button 
+      className="p-8 py-4 text-xl bg-primary flex disabled:opacity-80 gap-2 text-background font-bold rounded-md"
+      onClick={() => {
+        sendGTMEvent({ event: 'submit-email', value: email });
+        sendGAEvent({ event: 'submit-email', value: email });
+      }}
+      disabled={pending}
+    >
+      { pending && <Loader2Icon className="animate-spin text-background" strokeWidth={3} /> }
+      Automatizar
+    </button>
+  )
+}
 export default SubmitEmail;

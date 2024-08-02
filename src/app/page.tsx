@@ -15,6 +15,8 @@ import MainButton from "@/components/main-button";
 import BackgroundBubble from "@/components/background-bubble";
 import NewFAQButton from "@/components/new-faq";
 
+// const words = ["agendamento de mensagens"];
+
 const words = ["super poderes", "respostas automaticas", "agendamento de mensagens",  "multiplos atendentes", "suporte 24hs"];
 const features = [
   {
@@ -115,8 +117,8 @@ export default function Home() {
         <main className="container relative py-10">
           <header className="flex flex-col items-center text-center mb-10">
             <Logo />
-            <div className="flex flex-col items-center space-y-5 my-16">
-              <div className="text-foreground text-5xl font-bold">
+            <div className="flex flex-col items-center space-y-2 my-16">
+              <div className="text-foreground text-5xl h-52 font-bold">
                 <h1>Whatsapp com <span className="sr-only">super poderes</span></h1>
                 <FlipWords words={words} className="text-primary" /> <br />
               </div>
@@ -160,7 +162,7 @@ export default function Home() {
           Varias empresas já estão usando inteligencia artificial, {" "}
           <Highlight>só você vai ficar para trâs?</Highlight>
         </Subtitle>
-        <div className="">
+        <div>
           <InfiniteScroll
             direction="right"
             speed="fast"

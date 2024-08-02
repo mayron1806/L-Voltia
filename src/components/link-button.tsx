@@ -5,10 +5,11 @@ import { cn } from '@/lib/utils';
 type LinkButtonProps = LinkProps & {
   children: React.ReactNode;
   className?: string;
+  target?: string;
 };
 
-const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(({ href, children, className, ...rest }, ref) => (
-  <Link href={href} ref={ref} className={cn('bg-primary text-background font-bold px-8 py-4 rounded-lg', className)} {...rest}>
+const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(({ href, children, className, target, ...rest }, ref) => (
+  <Link href={href} ref={ref} target={target} className={cn('bg-primary text-background font-bold px-8 py-4 rounded-lg', className)} {...rest}>
     {children}
   </Link>
 ));
