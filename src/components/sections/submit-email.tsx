@@ -1,22 +1,53 @@
 'use client';
-import { submitEmail } from "@/actions/submit-email";
 import { sendGAEvent, sendGTMEvent } from "@next/third-parties/google";
 import { Loader2Icon } from "lucide-react";
 import { useState } from "react";
-import { useFormState, useFormStatus } from "react-dom";
 import Section from "../section";
+import { useRouter, useSearchParams } from "next/navigation";
 
 type Props = {
   label?: string;
 }
 const SubmitEmail = ({ label }: Props) => {
-  const [state, formAction] = useFormState(submitEmail, undefined);
+  const [isLoading, setIsLoading] = useState(false);
+  const searchParams = useSearchParams();
   const [email, setEmail] = useState("");
-
+  const [error, setError] = useState("");
+  const router = useRouter();
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setError("");
+    if (!email) {
+      setError("Preencha o campo de e-mail");
+      return;
+    }
+    sendGAEvent({ action: "submit_email", category: "form", label: email });
+    sendGTMEvent({ event: "submit_email", email });
+    setIsLoading(true);
+    const response = await fetch('/api/email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email }),
+    });
+    setIsLoading(false);
+    if (response.ok) {
+      router.refresh();
+      const template = searchParams.get('template');
+      if (template === 'whatsapp') {
+        router.push('/congratulations?template=whatsapp');
+      } else {
+        router.push('/congratulations');
+      }
+    } else {
+      setError("Erro ao enviar o e-mail");
+    }
+  }
   return (
     <Section>
       <form 
-        action={formAction}
+        onSubmit={handleSubmit}
         className="gap-2 flex flex-col items-center w-full max-w-screen-sm mx-auto justify-center"
       >
         <label id="form" className="font-bold text-2xl">{label}</label>
@@ -29,35 +60,23 @@ const SubmitEmail = ({ label }: Props) => {
           className="p-4 rounded-md border px-6 text-xl w-full border-primary"
         />
         {
-          !state?.success &&
-          <span className="text-red-500 text-sm">{state?.error}</span>
+          error.length > 0 &&
+          <span className="text-red-500 text-sm">{error}</span>
         }
-        {
-          state?.success &&
-          <span className="text-green-500 text-sm">Email enviado!</span>
-        }
-        <Submit email={email} />
+        <button 
+          className="p-8 py-4 text-xl bg-primary flex disabled:opacity-80 gap-2 text-background font-bold rounded-md"
+          onClick={() => {
+            sendGTMEvent({ event: 'submit-email', value: email });
+            sendGAEvent({ event: 'submit-email', value: email });
+          }}
+          disabled={isLoading}
+        >
+          { isLoading && <Loader2Icon className="animate-spin text-background" strokeWidth={3} /> }
+          Automatizar
+        </button>
       </form>
     </Section>
   );
 }
-type SubmitProps = {
-  email: string;
-}
-const Submit = ({ email }: SubmitProps) => {
-  const { pending } = useFormStatus();
-  return (
-    <button 
-      className="p-8 py-4 text-xl bg-primary flex disabled:opacity-80 gap-2 text-background font-bold rounded-md"
-      onClick={() => {
-        sendGTMEvent({ event: 'submit-email', value: email });
-        sendGAEvent({ event: 'submit-email', value: email });
-      }}
-      disabled={pending}
-    >
-      { pending && <Loader2Icon className="animate-spin text-background" strokeWidth={3} /> }
-      Automatizar
-    </button>
-  )
-}
+
 export default SubmitEmail;

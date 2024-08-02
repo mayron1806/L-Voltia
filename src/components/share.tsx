@@ -8,13 +8,13 @@ const Share = () => {
   useEffect(()=> {
     if (typeof window !== 'undefined') {
       const url = new URL(window.location.href);
-      setLink(`${url.protocol}//${url.host}`);
+      setLink(`${url.protocol}//${url.host}?${url.search}`);
     }
   }, []);
   return ( 
     <Popover>
       <PopoverTrigger asChild>
-        <button className="p-4 px-8 transition-all bg-gradient-to-tr from-secondary to-indigo-500 flex gap-2 items-center rounded-lg text-lg font-bold relative">
+        <button className="p-4 px-8 transition-all bg-gradient-to-tr from-primary to-primary-lighter flex gap-2 items-center rounded-lg text-lg font-bold relative">
           <Share2 className="w-5 h-5" strokeWidth={3} />
           Compartilhar
         </button>
